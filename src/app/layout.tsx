@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Navarro Bomfim Advocacia | Dr. Alexandre Navarro Bomfim - Andradina/SP",
+  title: "Tainá Lopes Gonçalves Advocacia | Direito Bancário e Busca e Apreensão - Andradina/SP",
   description:
-    "Escritório de advocacia em Andradina-SP especializado em Direito Médico, Direito Empresarial, Recuperação de Crédito, Direito Cível, Trabalhista e Previdenciário. Agende sua consulta.",
+    "Advogada em Andradina-SP especializada em Direito Bancário, Busca e Apreensão de Veículos, renegociação de dívidas e defesa do consumidor. Agende sua consulta.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
