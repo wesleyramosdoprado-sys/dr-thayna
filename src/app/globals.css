@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   LAYER 1 — PRIMITIVES
+   Raw values. No semantic meaning. Change rarely.
+   ============================================================ */
+:root {
+  /* Color primitives — warm near-black neutrals + gold scale */
+  --stone-950: #0c0a09;
+  --stone-925: #131110;
+  --stone-900: #17140f;
+  --stone-850: #1f1b15;
+  --stone-800: #2a251d;
+  --stone-border: #332c22;
+  --stone-border-strong: #4a4030;
+  --stone-400: #a8a29e;
+  --stone-100: #f5f1e8;
+
+  --gold-300: #e5c158;
+  --gold-500: #c9a227;
+  --gold-700: #8a7020;
+
+  --clay-500: #b4432e;
+  --sage-500: #5c7a5a;
+
+  /* Paper scale — for sections that alternate to a light surface */
+  --paper-950: #17140f;
+  --paper-600: #6b6357;
+  --tan-border: #e4ddd0;
+
+  /* Spacing primitives — 8px rhythm, wide jumps for a luxury cadence */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-24: 6rem; /* 96px */
+  --space-32: 8rem; /* 128px */
+
+  /* Radius primitive — restrained, not bubbly */
+  --radius-base: 0.25rem; /* 4px */
+
+  /* Layout primitives */
+  --container-max: 80rem; /* 1280px */
+  --gutter-mobile: 1.5rem; /* 24px */
+  --gutter-desktop: 4rem; /* 64px */
+}
+
+/* ============================================================
+   LAYER 2 — SEMANTIC
+   Purpose-based aliases. This is the single dark theme; there is
+   no light-mode override — the palette IS the brand.
+   ============================================================ */
+:root {
+  --background: var(--stone-950);
+  --foreground: var(--stone-100);
+
+  --card: var(--stone-900);
+  --card-foreground: var(--stone-100);
+
+  --popover: var(--stone-850);
+  --popover-foreground: var(--stone-100);
+
+  --primary: var(--gold-500);
+  --primary-hover: var(--gold-300);
+  --primary-foreground: var(--stone-950);
+
+  --secondary: var(--stone-850);
+  --secondary-foreground: var(--stone-100);
+
+  --muted: var(--stone-900);
+  --muted-foreground: var(--stone-400);
+
+  --accent: var(--gold-500);
+  --accent-muted: var(--gold-700);
+  --accent-foreground: var(--stone-950);
+
+  --destructive: var(--clay-500);
+  --destructive-foreground: var(--stone-100);
+
+  --success: var(--sage-500);
+  --success-foreground: var(--stone-100);
+
+  --border: var(--stone-border);
+  --border-strong: var(--stone-border-strong);
+  --input: var(--stone-border);
+  --ring: var(--gold-500);
+
+  --radius: var(--radius-base);
+
+  /* Paper — light surface used to alternate section rhythm */
+  --paper: var(--stone-100);
+  --paper-foreground: var(--paper-950);
+  --paper-muted-foreground: var(--paper-600);
+  --paper-border: var(--tan-border);
+  --paper-accent: var(--gold-700);
+}
+
+/* ============================================================
+   LAYER 3 — COMPONENT
+   Per-component overrides, only where the default semantic
+   token isn't specific enough.
+   ============================================================ */
+:root {
+  --button-radius: var(--radius);
+  --button-padding-x: var(--space-6);
+  --button-padding-y: var(--space-3);
+
+  --card-radius: var(--radius);
+  --card-padding: var(--space-8);
+  --card-border: var(--border);
+
+  --input-radius: 0;
+  --input-border: var(--border);
+  --input-focus-ring: var(--ring);
+}
+
+/* ============================================================
+   TAILWIND THEME BINDING
+   ============================================================ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-paper-muted-foreground: var(--paper-muted-foreground);
+  --color-paper-border: var(--paper-border);
+  --color-paper-accent: var(--paper-accent);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-24: var(--space-24);
+  --spacing-32: var(--space-32);
+
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-heading: var(--font-serif);
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.container-luxury {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter-mobile);
+}
+
+@media (min-width: 1024px) {
+  .container-luxury {
+    padding-inline: var(--gutter-desktop);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
